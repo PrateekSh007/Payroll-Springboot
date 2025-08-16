@@ -23,7 +23,7 @@ public class Salary {
     private Employee employee;
 
     private Double baseSalary;
-    private Double allowance;
+    private Double allowances;
     private Double deductions;
     private Double netSalary;
 
