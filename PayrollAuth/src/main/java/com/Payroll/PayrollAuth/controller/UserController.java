@@ -24,5 +24,4 @@ public class UserController {
     public ResponseEntity<UserResponse> login(@RequestBody User loginRequest) {
         return ResponseEntity.ok(userService.loginUser(loginRequest));
     }
-
 }

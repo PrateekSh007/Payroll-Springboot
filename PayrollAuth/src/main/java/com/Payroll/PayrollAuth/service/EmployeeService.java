@@ -5,6 +5,7 @@ import com.Payroll.PayrollAuth.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -27,6 +28,25 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Long id,Employee updatedEmployee){
+        Employee employee = employeeRepository.findById(id).
+                orElseThrow(() -> new RuntimeException("Employee not found")) ;
 
+        employee.setFirstName(updatedEmployee.getFirstName());
+        employee.setLastName(updatedEmployee.getLastName());
+        employee.setMobileNumber(updatedEmployee.getMobileNumber());
+        employee.setDesignation(updatedEmployee.getDesignation());
+        return employeeRepository.save(employee) ;
     }
+
+    public void deleteEmployee(Long id){
+        if (!employeeRepository.existsById(id)) {
+            throw new RuntimeException("Employee not found!");
+        }
+        employeeRepository.deleteById(id);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
 }
