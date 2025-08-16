@@ -54,7 +54,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Optional if you need AuthenticationManager elsewhere
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
